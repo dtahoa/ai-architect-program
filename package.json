@@ -1,0 +1,25 @@
+{
+  "name": "ai-architect-program",
+  "version": "1.0.0",
+  "description": "AI archiectture self-training program",
+  "keywords": [
+    "ai",
+    "architecture",
+    "program"
+  ],
+  "homepage": "https://github.com/dtahoa/ai-architect-program#readme",
+  "bugs": {
+    "url": "https://github.com/dtahoa/ai-architect-program/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dtahoa/ai-architect-program.git"
+  },
+  "license": "ISC",
+  "author": "HoaNguyen",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  }
+}
