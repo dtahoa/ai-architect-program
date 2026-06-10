@@ -7,7 +7,7 @@
     "architecture",
     "program"
   ],
-  "homepage": "https://github.com/dtahoa/ai-architect-program#readme",
+  "homepage": "https://dtahoa.github.io/ai-architect-program/",
   "bugs": {
     "url": "https://github.com/dtahoa/ai-architect-program/issues"
   },
@@ -20,6 +20,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "build": "npm run generate:index",
+    "generate:index": "node scripts/generate-site-data.js"
   }
 }

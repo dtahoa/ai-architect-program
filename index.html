@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Architect Program</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#/" aria-label="AI Architect Program home">
+        <span class="brand-mark">AI</span>
+        <span>
+          <strong>AI Architect Program</strong>
+          <small>Curriculum file browser</small>
+        </span>
+      </a>
+      <form class="search" role="search">
+        <label class="sr-only" for="file-search">Search files</label>
+        <input id="file-search" type="search" placeholder="Search files">
+      </form>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar" aria-label="Repository folders">
+        <div class="sidebar-title">Folders</div>
+        <nav id="folder-nav"></nav>
+      </aside>
+
+      <section class="content" aria-live="polite">
+        <nav id="breadcrumbs" class="breadcrumbs" aria-label="Breadcrumb"></nav>
+        <div id="view"></div>
+      </section>
+    </main>
+
+    <script src="site-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
