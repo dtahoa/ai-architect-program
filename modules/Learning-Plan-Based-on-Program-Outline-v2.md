@@ -832,4 +832,4 @@ Nếu hoàn thành toàn bộ roadmap, bạn nên có:
 * FinOps Report
 * Executive Summary
 
-Đây là bộ hồ sơ đủ mạnh để ứng tuyển các vị trí AI Technical Architect tại các công ty SaaS, Insurance, Healthcare hoặc Consulting, đồng thời tận dụng tối đa kinh nghiệm 15 năm của bạn thay vì đi theo lộ trình AI Engineer từ đầu.
+Đây là bộ hồ sơ đủ mạnh để ứng tuyển các vị trí AI Technical Architect tại các công ty SaaS, Insurance, Healthcare hoặc Consulting, đồng thời tận dụng tối đa kinh nghiệm của bạn thay vì đi theo lộ trình AI Engineer từ đầu.

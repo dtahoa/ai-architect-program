@@ -1,4 +1,4 @@
-Với nền tảng của bạn (**15 năm kinh nghiệm, 10 năm Tech Lead/Team Lead, Fullstack NodeJS/NestJS, Java, Python, React, NextJS, Angular, AWS, Azure, từng làm Healthcare, Insurance, Ecommerce SaaS**), khóa học này không nên được học theo kiểu "đi nghe giảng". Bạn đã vượt qua mức Senior Engineer, nên mục tiêu nên là:
+Với nền tảng của bạn (**Tech Lead/Team Lead, Fullstack NodeJS/NestJS, Java, Python, React, NextJS, Angular, AWS, Azure, từng làm Healthcare, Insurance, Ecommerce SaaS**), khóa học này không nên được học theo kiểu "đi nghe giảng", nên mục tiêu nên là:
 
 > **Chuyển từ Technical Lead → AI Technical Architect**
 
@@ -504,4 +504,4 @@ This project naturally demonstrates almost every module in the course and aligns
 * [Azure AI Architecture Center](https://learn.microsoft.com/azure/architecture/ai-ml/?utm_source=chatgpt.com)
 * [Google Generative AI Architecture Patterns](https://cloud.google.com/architecture/gen-ai?utm_source=chatgpt.com)
 
-Với profile hiện tại, nếu học nghiêm túc và hoàn thành capstone theo hướng trên, bạn đang ở mức **Senior Technical Lead chuyển sang AI Solution Architect/AI Technical Architect**, chứ không phải bắt đầu từ AI Engineer. Điều đó sẽ giúp tận dụng tối đa kinh nghiệm kiến trúc hệ thống và quản lý đội ngũ mà bạn đã tích lũy trong 15 năm qua.
+Với profile hiện tại, nếu học nghiêm túc và hoàn thành capstone theo hướng trên, bạn đang ở mức **Technical Lead chuyển sang AI Solution Architect/AI Technical Architect**, chứ không phải bắt đầu từ AI Engineer. Điều đó sẽ giúp tận dụng tối đa kinh nghiệm kiến trúc hệ thống và quản lý đội ngũ.

@@ -23,10 +23,10 @@ window.SITE_FILES = [
     "path": "modules/ADR-what-is.md",
     "type": "file"
   },
-  {
-    "path": "modules/Learning-Plan-Based-on-Program-Outline-v2.md",
-    "type": "file"
-  },
+  // {
+  //   "path": "modules/Learning-Plan-Based-on-Program-Outline-v2.md",
+  //   "type": "file"
+  // },
   {
     "path": "modules/Learning-Plan-Based-on-Program-Outline.md",
     "type": "file"
