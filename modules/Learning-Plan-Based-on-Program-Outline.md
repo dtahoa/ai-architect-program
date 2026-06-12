@@ -16,7 +16,7 @@ Hiểu các thành phần trong hệ sinh thái AI hiện đại.
 
 ### Need to Master
 
-* AI Architecture Layers
+AI Architecture Layers
 
   * Application Layer
   * Agent Layer
@@ -24,7 +24,7 @@ Hiểu các thành phần trong hệ sinh thái AI hiện đại.
   * Data Layer
   * Infrastructure Layer
 
-* AI Product Lifecycle
+AI Product Lifecycle
 
   * Idea
   * POC
@@ -32,7 +32,7 @@ Hiểu các thành phần trong hệ sinh thái AI hiện đại.
   * Production
   * Monitoring
 
-* AI Solution Types
+AI Solution Types
 ```text
 | Type        | Example            |
 | ----------- | ------------------ |

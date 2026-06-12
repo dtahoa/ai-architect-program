@@ -110,6 +110,7 @@ FinOps Dashboard
 
 Không phải component nào cũng scale giống nhau.
 
+```text
 | Component        | Scale theo gì                         |
 | ---------------- | ------------------------------------- |
 | Frontend         | CDN traffic                           |
@@ -120,6 +121,7 @@ Không phải component nào cũng scale giống nhau.
 | LLM Gateway      | Token throughput, provider rate limit |
 | Database         | Connection count, CPU, IOPS           |
 | Cache            | Hit rate, memory                      |
+```
 
 ---
 
@@ -752,7 +754,7 @@ Không cache nếu data version thay đổi
 # 19. Model routing for cost
 
 ## Routing matrix
-
+```text
 | Task                 | Default model | Escalate when         |
 | -------------------- | ------------- | --------------------- |
 | Claim classification | Small model   | confidence < 0.8      |
@@ -760,6 +762,7 @@ Không cache nếu data version thay đổi
 | Summary              | Medium        | long complex document |
 | Risk assessment      | Strong        | always                |
 | Fraud investigation  | Strong        | high value claim      |
+```
 
 ---
 

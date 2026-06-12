@@ -148,7 +148,7 @@ Nguyên tắc quan trọng:
 # 5. Threat Model cho AI Claims Copilot
 
 ## Các threat chính
-
+```text
 | Threat                | Ví dụ                                   | Impact                    |
 | --------------------- | --------------------------------------- | ------------------------- |
 | Prompt injection      | PDF chứa “ignore previous instructions” | AI làm sai hoặc leak data |
@@ -159,7 +159,7 @@ Nguyên tắc quan trọng:
 | Hallucination         | AI bịa policy coverage                  | Sai quyết định            |
 | Over-permission       | AI service đọc toàn bộ DB               | Blast radius lớn          |
 | Missing audit         | Không biết AI dùng source nào           | Không điều tra được       |
-
+```
 ---
 
 # 6. DFD: Data Flow Diagram
@@ -555,7 +555,7 @@ class OutputGuardrailService:
 LLM không được có quyền gọi tool tùy ý.
 
 ## Tool classification
-
+```text
 | Tool Type      | Ví dụ                | Control             |
 | -------------- | -------------------- | ------------------- |
 | Read-only      | get_claim_details    | Allow with RBAC     |
@@ -563,7 +563,7 @@ LLM không được có quyền gọi tool tùy ý.
 | Medium-risk    | create_review_task   | Allow with policy   |
 | High-risk      | approve_claim        | Human approval only |
 | Dangerous      | delete_customer_data | Never direct LLM    |
-
+```
 ---
 
 ## Tool policy
@@ -825,7 +825,7 @@ NIST AI RMF dùng các chức năng như Govern, Map, Measure, Manage để tổ
 # 20. AI Governance Operating Model
 
 ## Roles
-
+```text
 | Role                   | Responsibility               |
 | ---------------------- | ---------------------------- |
 | AI Product Owner       | Business outcome             |
@@ -835,7 +835,7 @@ NIST AI RMF dùng các chức năng như Govern, Map, Measure, Manage để tổ
 | Compliance Officer     | Regulatory compliance        |
 | Human Reviewer         | Final decision               |
 | ML/LLMOps Engineer     | Monitoring + deployment      |
-
+```
 ---
 
 # 21. Policy-as-Code

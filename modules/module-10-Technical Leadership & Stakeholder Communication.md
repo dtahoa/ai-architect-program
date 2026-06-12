@@ -337,7 +337,7 @@ Revisit after six months of production data if:
 Architect phải biết nói về risk rõ ràng.
 
 ## Template
-
+```text
 | Risk             |   Impact | Probability | Mitigation                      | Owner        |
 | ---------------- | -------: | ----------: | ------------------------------- | ------------ |
 | AI hallucination |     High |      Medium | RAG + citation + human review   | AI Architect |
@@ -345,7 +345,7 @@ Architect phải biết nói về risk rõ ràng.
 | Cost overrun     |   Medium |      Medium | Budget guard + model routing    | Platform     |
 | Poor adoption    |     High |      Medium | Human-centered UX + training    | Product      |
 | LLM outage       |     High |         Low | Fallback provider + queue retry | Platform     |
-
+```
 ---
 
 # 9. Cách giải thích trade-off

@@ -94,14 +94,14 @@ Gemini
 ```
 
 Architect phải đánh giá:
-
+```text
 | Criteria       | GPT | Claude | Gemini |
 | -------------- | --- | ------ | ------ |
 | Cost           |     |        |        |
 | Accuracy       |     |        |        |
 | Context Window |     |        |        |
 | Security       |     |        |        |
-
+```
 Sau đó ra quyết định.
 
 Đó là ADR.
