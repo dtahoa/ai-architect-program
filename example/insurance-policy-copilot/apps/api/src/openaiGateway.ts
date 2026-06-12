@@ -9,6 +9,13 @@ const client = new OpenAI({
   apiKey: config.openaiApiKey ?? 'missing-key'
 });
 
+type FeatureExtractionPipeline = (
+  input: string | string[],
+  options: { pooling: 'mean'; normalize: boolean }
+) => Promise<{ data: Float32Array | number[]; dims: number[]; tolist?: () => number[] | number[][] }>;
+
+let localExtractorPromise: Promise<FeatureExtractionPipeline> | undefined;
+
 export type EmbeddingResult = {
   embeddings: number[][];
   inputTokens: number;
@@ -77,6 +84,62 @@ function createEmbeddingBatches(input: string[]): EmbeddingBatch[] {
   return batches;
 }
 
+function resolveLocalEmbeddingModel(model: string): string {
+  if (model === 'BAAI/bge-small-en-v1.5') {
+    return 'Xenova/bge-small-en-v1.5';
+  }
+
+  return model;
+}
+
+async function getLocalExtractor(): Promise<FeatureExtractionPipeline> {
+  if (!localExtractorPromise) {
+    localExtractorPromise = import('@xenova/transformers').then(async ({ pipeline, env }) => {
+      env.allowLocalModels = false;
+      return pipeline(
+        'feature-extraction',
+        resolveLocalEmbeddingModel(config.embeddingModel)
+      ) as Promise<FeatureExtractionPipeline>;
+    });
+  }
+
+  return localExtractorPromise;
+}
+
+function normalizeLocalEmbeddingOutput(output: {
+  data: Float32Array | number[];
+  dims: number[];
+  tolist?: () => number[] | number[][];
+}): number[][] {
+  const listed = output.tolist?.();
+
+  if (Array.isArray(listed) && Array.isArray(listed[0])) {
+    return listed as number[][];
+  }
+
+  if (Array.isArray(listed)) {
+    return [listed as number[]];
+  }
+
+  const [rows, dimensions] = output.dims.length === 2
+    ? output.dims
+    : [1, output.dims[output.dims.length - 1] ?? config.embeddingDimensions];
+  const data = Array.from(output.data);
+  const embeddings: number[][] = [];
+
+  for (let row = 0; row < rows; row += 1) {
+    embeddings.push(data.slice(row * dimensions, (row + 1) * dimensions));
+  }
+
+  return embeddings;
+}
+
+async function createLocalEmbeddingBatch(input: string[]): Promise<number[][]> {
+  const extractor = await getLocalExtractor();
+  const output = await extractor(input, { pooling: 'mean', normalize: true });
+  return normalizeLocalEmbeddingOutput(output);
+}
+
 async function createEmbeddingBatch(input: string[], attempt = 0) {
   try {
     return await client.embeddings.create({
@@ -102,6 +165,17 @@ export async function createEmbeddings(input: string[]): Promise<EmbeddingResult
   for (const [batchIndex, batch] of batches.entries()) {
     if (batchIndex > 0 && config.embedding.minDelayMs > 0) {
       await sleep(config.embedding.minDelayMs);
+    }
+
+    if (config.embeddingProvider === 'local') {
+      const batchEmbeddings = await createLocalEmbeddingBatch(batch.input);
+
+      for (const [index, embedding] of batchEmbeddings.entries()) {
+        embeddings[batch.startIndex + index] = embedding;
+      }
+
+      inputTokens += batch.input.reduce((sum, value) => sum + estimateEmbeddingTokens(value), 0);
+      continue;
     }
 
     const response = await createEmbeddingBatch(batch.input);

@@ -81,16 +81,26 @@ docker compose up db
 
 - Upload PDF policies and extract page-aware text.
 - Split text into overlapping chunks with stable token estimates.
-- Generate embeddings with OpenAI in rate-limit-aware batches and store them in `pgvector`.
+- Generate local BGE embeddings in rate-limit-aware batches and store them in `pgvector`.
 - Retrieve the most relevant policy chunks for a question.
 - Generate grounded answers with citations.
 - Track prompt template version, rendered prompt, token usage, latency, and cost.
 - Run a small evaluation set against uploaded policies.
 - Inspect cost and prompt telemetry in the UI.
 
-## Embedding Rate Limits
+## Embeddings
 
-The API batches embedding calls to stay comfortably below common limits such as `40,000 TPM` and `100 RPM`.
+The default embedding provider is local Transformers.js using BGE small:
+
+```text
+EMBEDDING_PROVIDER=local
+EMBEDDING_MODEL=BAAI/bge-small-en-v1.5
+EMBEDDING_DIMENSIONS=384
+```
+
+For Transformers.js runtime compatibility, the API maps `BAAI/bge-small-en-v1.5` to the ONNX-ready `Xenova/bge-small-en-v1.5` artifact internally. The semantic model is BGE small.
+
+The API still batches embedding work so the same code can run with hosted embedding providers later.
 
 ```text
 EMBEDDING_BATCH_SIZE=8
@@ -98,8 +108,6 @@ EMBEDDING_MAX_TOKENS_PER_BATCH=8000
 EMBEDDING_MIN_DELAY_MS=750
 EMBEDDING_MAX_RETRIES=4
 ```
-
-`429 rate_limit_exceeded` responses are retried with backoff. `429 insufficient_quota` is not retried because it means the key or project lacks usable quota for the embeddings endpoint.
 
 ## Project Layout
 

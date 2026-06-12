@@ -8,6 +8,10 @@ export type UsageInput = {
 
 export function estimateCostUsd(usage: UsageInput): number {
   if (usage.operation === 'embedding') {
+    if (config.embeddingProvider === 'local') {
+      return 0;
+    }
+
     return (usage.inputTokens / 1_000_000) * config.prices.embeddingPer1M;
   }
 

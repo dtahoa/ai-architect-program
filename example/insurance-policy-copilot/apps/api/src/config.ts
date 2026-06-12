@@ -12,8 +12,11 @@ export const config = {
   databaseUrl: process.env.DATABASE_URL ?? 'postgres://copilot:copilot@localhost:5432/insurance_copilot',
   openaiApiKey: process.env.OPENAI_API_KEY,
   chatModel: process.env.OPENAI_CHAT_MODEL ?? 'gpt-4.1-mini',
-  embeddingModel: process.env.OPENAI_EMBEDDING_MODEL ?? 'text-embedding-3-small',
-  embeddingDimensions: numberFromEnv('OPENAI_EMBEDDING_DIMENSIONS', 1536),
+  embeddingProvider: process.env.EMBEDDING_PROVIDER ?? 'local',
+  embeddingModel: process.env.EMBEDDING_MODEL
+    ?? process.env.OPENAI_EMBEDDING_MODEL
+    ?? 'BAAI/bge-small-en-v1.5',
+  embeddingDimensions: numberFromEnv('EMBEDDING_DIMENSIONS', numberFromEnv('OPENAI_EMBEDDING_DIMENSIONS', 384)),
   embedding: {
     batchSize: numberFromEnv('EMBEDDING_BATCH_SIZE', 8),
     maxTokensPerBatch: numberFromEnv('EMBEDDING_MAX_TOKENS_PER_BATCH', 8000),
