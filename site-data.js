@@ -1,10 +1,14 @@
 window.SITE_FILES = [
   {
-    "path": "modules/Prerequisite-AI-Technical-Architect-Program.md",
+    "path": "modules/core-concepts/Prerequisite-AI-Technical-Architect-Program.md",
     "type": "file"
   },
   {
-    "path": "modules/Prerequisite-AI-Technical-Architect-Program-vi.md",
+    "path": "modules/core-concepts/Prerequisite-AI-Technical-Architect-Program-vi.md",
+    "type": "file"
+  },
+  {
+    "path": "modules/core-concepts/vector-db.md",
     "type": "file"
   },
   // {
@@ -76,7 +80,7 @@ window.SITE_FILES = [
     "type": "file"
   },
   {
-    "path": "modules/ADR-what-is.md",
+    "path": "modules/core-concepts/ADR-what-is.md",
     "type": "file"
   },
   {
