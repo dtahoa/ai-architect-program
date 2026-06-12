@@ -1,6 +1,6 @@
 # Insurance Policy Copilot - Workflow hoạt động
 
-Tài liệu này giải thích cách các component trong project phối hợp với nhau để tạo thành một AI application kiểu production: từ UI, API, database, vector search, RAG, OpenAI, citation, cost tracking, prompt tracking đến evaluation.
+Tài liệu này giải thích cách các component trong project phối hợp với nhau để tạo thành một AI application kiểu production: từ UI, API, database, vector search, RAG, Groq chat, citation, cost tracking, prompt tracking đến evaluation.
 
 ## 1. Bức tranh tổng thể
 
@@ -20,7 +20,7 @@ Fastify API
   |-- Local BGE embedding
   |-- Vector search
   |-- Prompt rendering
-  |-- OpenAI chat completion
+  |-- Groq chat completion
   |-- Citation mapping
   |-- Cost / prompt / evaluation tracking
   v
@@ -55,7 +55,7 @@ apps/api
   PDF ingestion
   Embedding
   RAG
-  OpenAI chat
+  Groq chat
   Evaluation
 
 infra/db
@@ -113,7 +113,7 @@ Vai trò:
 - Tạo embeddings.
 - Query pgvector.
 - Render prompt.
-- Gọi OpenAI để tạo answer.
+- Gọi Groq để tạo answer.
 - Lưu logs, cost, prompt run, evaluation result.
 
 File quan trọng:
@@ -396,7 +396,7 @@ API builds RAG context with citation markers
 API renders prompt template
   |
   v
-OpenAI generates answer
+Groq generates answer
   |
   v
 API stores prompt run, usage, chat message
@@ -548,14 +548,16 @@ Policy context:
 
 Đây là prompt tracking foundation. Khi production, mỗi lần đổi prompt nên tạo version mới thay vì sửa trực tiếp version cũ.
 
-### Step 7: gọi OpenAI
+### Step 7: gọi Groq
 
-Embedding đã local, nhưng answer generation vẫn dùng OpenAI chat model.
+Embedding đã local, nhưng answer generation dùng Groq qua OpenAI-compatible API.
 
 Config:
 
 ```text
-OPENAI_CHAT_MODEL=gpt-4.1-mini
+CHAT_PROVIDER=groq
+CHAT_BASE_URL=https://api.groq.com/openai/v1
+CHAT_MODEL=llama-3.3-70b-versatile
 ```
 
 File:
@@ -564,7 +566,7 @@ File:
 apps/api/src/openaiGateway.ts
 ```
 
-API gọi:
+API gọi Groq bằng OpenAI-compatible SDK:
 
 ```text
 client.chat.completions.create(...)
@@ -675,7 +677,7 @@ Khi user hỏi câu hỏi:
 
 1. API lấy active prompt template.
 2. Render prompt với question + context.
-3. Gọi OpenAI.
+3. Gọi Groq.
 4. Insert vào `prompt_runs`.
 5. Insert token/cost vào `llm_usage`.
 6. Insert answer/citations vào `chat_messages`.
@@ -827,7 +829,7 @@ Chunking giúp:
 - Tạo citation chính xác hơn.
 - Scale tốt hơn khi có nhiều documents.
 
-## 11. Vì sao embedding local nhưng answer vẫn dùng OpenAI?
+## 11. Vì sao embedding local nhưng answer dùng Groq?
 
 Embedding và generation là 2 năng lực khác nhau.
 
@@ -847,7 +849,7 @@ Project hiện tại dùng:
 
 ```text
 Embedding: local BGE small
-Generation: OpenAI chat model
+Generation: Groq chat model
 ```
 
 Lợi ích:
@@ -855,7 +857,7 @@ Lợi ích:
 - Không bị quota embeddings của OpenAI.
 - Embedding cost = 0.
 - Dữ liệu chunk không cần gửi đến OpenAI ở ingestion time.
-- Vẫn tận dụng OpenAI để tạo answer chất lượng.
+- Vẫn tận dụng hosted LLM tốc độ cao để tạo answer chất lượng.
 
 Trade-off:
 
@@ -896,7 +898,7 @@ question received
   -> question embedding
   -> retrieve chunks
   -> render prompt
-  -> OpenAI answer
+  -> Groq answer
   -> store prompt run
   -> store usage
   -> store chat message
@@ -955,7 +957,7 @@ Upload PDF:
 PDF -> text -> chunks -> BGE vectors -> pgvector
 
 Ask question:
-question -> BGE vector -> pgvector search -> context -> OpenAI -> answer + citations
+question -> BGE vector -> pgvector search -> context -> Groq -> answer + citations
 
 Tracking:
 prompt_runs + llm_usage + chat_messages

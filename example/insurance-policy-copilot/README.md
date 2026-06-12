@@ -8,7 +8,7 @@ Upload PDF
   -> Embedding
   -> pgvector
   -> RAG
-  -> OpenAI
+  -> Groq
   -> Citation
   -> Cost Tracking
   -> Prompt Tracking
@@ -26,9 +26,9 @@ React Web App
 Fastify API
   |-- PDF extraction
   |-- chunking
-  |-- OpenAI embeddings
+  |-- Local BGE embeddings
   |-- pgvector retrieval
-  |-- OpenAI answer generation
+  |-- Groq answer generation
   |-- citation mapping
   |-- prompt + cost tracking
   '-- evaluation runner
@@ -83,7 +83,7 @@ docker compose up db
 - Split text into overlapping chunks with stable token estimates.
 - Generate local BGE embeddings in rate-limit-aware batches and store them in `pgvector`.
 - Retrieve the most relevant policy chunks for a question.
-- Generate grounded answers with citations.
+- Generate grounded answers with citations through Groq's OpenAI-compatible API.
 - Track prompt template version, rendered prompt, token usage, latency, and cost.
 - Run a small evaluation set against uploaded policies.
 - Inspect cost and prompt telemetry in the UI.

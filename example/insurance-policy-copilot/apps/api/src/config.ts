@@ -11,7 +11,13 @@ export const config = {
   apiPort: numberFromEnv('API_PORT', 8080),
   databaseUrl: process.env.DATABASE_URL ?? 'postgres://copilot:copilot@localhost:5432/insurance_copilot',
   openaiApiKey: process.env.OPENAI_API_KEY,
-  chatModel: process.env.OPENAI_CHAT_MODEL ?? 'gpt-4.1-mini',
+  groqApiKey: process.env.GROQ_API_KEY,
+  chatProvider: process.env.CHAT_PROVIDER ?? 'groq',
+  chatBaseUrl: process.env.CHAT_BASE_URL ?? 'https://api.groq.com/openai/v1',
+  chatModel: process.env.CHAT_MODEL
+    ?? process.env.GROQ_CHAT_MODEL
+    ?? process.env.OPENAI_CHAT_MODEL
+    ?? 'llama-3.3-70b-versatile',
   embeddingProvider: process.env.EMBEDDING_PROVIDER ?? 'local',
   embeddingModel: process.env.EMBEDDING_MODEL
     ?? process.env.OPENAI_EMBEDDING_MODEL

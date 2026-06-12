@@ -2,11 +2,22 @@ import OpenAI from 'openai';
 import { config } from './config.js';
 
 if (!config.openaiApiKey) {
-  console.warn('OPENAI_API_KEY is not set. API calls that require OpenAI will fail until configured.');
+  console.warn('OPENAI_API_KEY is not set. Hosted OpenAI embedding calls will fail until configured.');
 }
 
-const client = new OpenAI({
+if (config.chatProvider === 'groq' && !config.groqApiKey) {
+  console.warn('GROQ_API_KEY is not set. Groq chat completion calls will fail until configured.');
+}
+
+const hostedEmbeddingClient = new OpenAI({
   apiKey: config.openaiApiKey ?? 'missing-key'
+});
+
+const chatClient = new OpenAI({
+  apiKey: config.chatProvider === 'groq'
+    ? config.groqApiKey ?? 'missing-key'
+    : config.openaiApiKey ?? 'missing-key',
+  baseURL: config.chatProvider === 'groq' ? config.chatBaseUrl : undefined
 });
 
 type FeatureExtractionPipeline = (
@@ -142,7 +153,7 @@ async function createLocalEmbeddingBatch(input: string[]): Promise<number[][]> {
 
 async function createEmbeddingBatch(input: string[], attempt = 0) {
   try {
-    return await client.embeddings.create({
+    return await hostedEmbeddingClient.embeddings.create({
       model: config.embeddingModel,
       input,
       dimensions: config.embeddingDimensions
@@ -198,7 +209,7 @@ export type ChatResult = {
 };
 
 export async function generateAnswer(systemPrompt: string, userPrompt: string): Promise<ChatResult> {
-  const response = await client.chat.completions.create({
+  const response = await chatClient.chat.completions.create({
     model: config.chatModel,
     messages: [
       { role: 'system', content: systemPrompt },
