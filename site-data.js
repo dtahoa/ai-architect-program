@@ -1,6 +1,6 @@
 window.SITE_FILES = [
   {
-    "path": "modules\Prerequisite-AI-Technical-Architect-Program.md",
+    "path": "modules/Prerequisite-AI-Technical-Architect-Program.md",
     "type": "file"
   },
   // {
