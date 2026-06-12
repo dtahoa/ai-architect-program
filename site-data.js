@@ -3,6 +3,10 @@ window.SITE_FILES = [
     "path": "modules/Prerequisite-AI-Technical-Architect-Program.md",
     "type": "file"
   },
+  {
+    "path": "modules/Prerequisite-AI-Technical-Architect-Program-vi.md",
+    "type": "file"
+  },
   // {
   //   "path": "modules/Learning-Plan-Based-on-Program-Outline-v2.md",
   //   "type": "file"
