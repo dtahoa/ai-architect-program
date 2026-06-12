@@ -33,12 +33,13 @@ Hiểu các thành phần trong hệ sinh thái AI hiện đại.
   * Monitoring
 
 * AI Solution Types
-
+```text
 | Type        | Example            |
 | ----------- | ------------------ |
 | AI-first    | ChatGPT            |
 | AI-enhanced | Github Copilot     |
 | AI-retrofit | Existing SaaS + AI |
+```
 
 ### Hands-on
 
@@ -127,6 +128,7 @@ Know when to choose what.
 
 ### Build Technology Decision Matrix
 
+```text
 | Layer         | Options                      |
 | ------------- | ---------------------------- |
 | LLM           | GPT-5, Claude, Gemini        |
@@ -135,6 +137,7 @@ Know when to choose what.
 | Agent         | LangGraph, CrewAI            |
 | Orchestration | Temporal                     |
 | Monitoring    | Langfuse                     |
+```
 
 ### Exercise
 
