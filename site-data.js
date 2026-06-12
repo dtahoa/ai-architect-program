@@ -11,6 +11,10 @@ window.SITE_FILES = [
     "path": "modules/core-concepts/vector-db.md",
     "type": "file"
   },
+  {
+    "path": "modules/core-concepts/RAG.md",
+    "type": "file"
+  },
   // {
   //   "path": "modules/Learning-Plan-Based-on-Program-Outline-v2.md",
   //   "type": "file"
