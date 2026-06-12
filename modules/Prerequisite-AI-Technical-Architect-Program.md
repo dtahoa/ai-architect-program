@@ -865,7 +865,6 @@ Hallucination rate
 Because you already have:
 
 ```text
-15 years experience
 Tech Lead
 NodeJS
 Java

@@ -906,7 +906,7 @@ Implementation
 
 # Project đầu tiên nên làm
 
-Với background của bạn (NodeJS, Java, Python, AWS, Azure, Tech Lead 15 năm), project tốt nhất không phải ChatGPT Clone.
+Với background của bạn (NodeJS, Java, Python, AWS, Azure, Tech Lead), project tốt nhất không phải ChatGPT Clone.
 
 Hãy build:
 
