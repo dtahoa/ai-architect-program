@@ -1,7 +1,5 @@
 Rất tốt. Để thực sự hiểu AI và trở thành AI Architect, bạn cần hiểu **bản chất bên dưới**, không chỉ nhớ các thuật ngữ.
 
-Tôi sẽ giải thích lại roadmap trên bằng tiếng Việt theo góc nhìn của một Tech Lead/Architect đã có 15 năm kinh nghiệm như bạn.
-
 ---
 
 # AI THỰC CHẤT LÀ GÌ?
