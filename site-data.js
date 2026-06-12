@@ -1,26 +1,6 @@
 window.SITE_FILES = [
   {
-    "path": "adr/ADR-001.md",
-    "type": "file"
-  },
-  {
-    "path": "adr/ADR-002.md",
-    "type": "file"
-  },
-  {
-    "path": "capstone/pass-fail-criteria.md",
-    "type": "file"
-  },
-  {
-    "path": "capstone/requirements.md",
-    "type": "file"
-  },
-  {
-    "path": "capstone/scoring-rubric.md",
-    "type": "file"
-  },
-  {
-    "path": "modules/ADR-what-is.md",
+    "path": "modules\Prerequisite-AI-Technical-Architect-Program.md",
     "type": "file"
   },
   // {
@@ -72,15 +52,31 @@ window.SITE_FILES = [
     "type": "file"
   },
   {
-    "path": "package.json",
+    "path": "adr/ADR-001.md",
+    "type": "file"
+  },
+  {
+    "path": "adr/ADR-002.md",
+    "type": "file"
+  },
+  {
+    "path": "capstone/pass-fail-criteria.md",
+    "type": "file"
+  },
+  {
+    "path": "capstone/requirements.md",
+    "type": "file"
+  },
+  {
+    "path": "capstone/scoring-rubric.md",
+    "type": "file"
+  },
+  {
+    "path": "modules/ADR-what-is.md",
     "type": "file"
   },
   {
     "path": "plan/plan.md",
-    "type": "file"
-  },
-  {
-    "path": "README.md",
     "type": "file"
   },
   {
