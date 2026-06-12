@@ -21,6 +21,7 @@ import {
   getPrompts,
   listDocuments,
   PromptRow,
+  runEvaluation,
   uploadPolicy
 } from './api';
 
