@@ -1,0 +1,22 @@
+{
+  "name": "default-policy-checks",
+  "description": "Starter evaluation cases. Upload a sample policy before running.",
+  "cases": [
+    {
+      "question": "What events are covered by this policy?",
+      "expectedAnswer": "The answer should list covered events only when supported by the policy text.",
+      "expectedCitationHint": "cover"
+    },
+    {
+      "question": "Are floods excluded or covered?",
+      "expectedAnswer": "The answer should not guess. It should cite the flood clause if present or say the uploaded policy does not determine it.",
+      "expectedCitationHint": "flood"
+    },
+    {
+      "question": "What is the claim notification deadline?",
+      "expectedAnswer": "The answer should include the deadline or state that the uploaded policy does not specify it.",
+      "expectedCitationHint": "notice"
+    }
+  ]
+}
+
