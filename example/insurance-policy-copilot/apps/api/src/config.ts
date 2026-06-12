@@ -14,6 +14,12 @@ export const config = {
   chatModel: process.env.OPENAI_CHAT_MODEL ?? 'gpt-4.1-mini',
   embeddingModel: process.env.OPENAI_EMBEDDING_MODEL ?? 'text-embedding-3-small',
   embeddingDimensions: numberFromEnv('OPENAI_EMBEDDING_DIMENSIONS', 1536),
+  embedding: {
+    batchSize: numberFromEnv('EMBEDDING_BATCH_SIZE', 8),
+    maxTokensPerBatch: numberFromEnv('EMBEDDING_MAX_TOKENS_PER_BATCH', 8000),
+    minDelayMs: numberFromEnv('EMBEDDING_MIN_DELAY_MS', 750),
+    maxRetries: numberFromEnv('EMBEDDING_MAX_RETRIES', 4)
+  },
   prices: {
     chatInputPer1M: numberFromEnv('CHAT_INPUT_PRICE_PER_1M', 0.4),
     chatOutputPer1M: numberFromEnv('CHAT_OUTPUT_PRICE_PER_1M', 1.6),

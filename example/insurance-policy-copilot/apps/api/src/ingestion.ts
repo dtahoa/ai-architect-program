@@ -12,14 +12,21 @@ export async function ingestPdf(input: {
   buffer: Buffer;
 }) {
   const digest = sha256(input.buffer);
-  const existing = await query<{ id: string }>('SELECT id FROM documents WHERE sha256 = $1', [digest]);
+  const existing = await query<{ id: string; status: string }>(
+    'SELECT id, status FROM documents WHERE sha256 = $1',
+    [digest]
+  );
 
-  if (existing.rows[0]) {
+  if (existing.rows[0]?.status === 'ready' || existing.rows[0]?.status === 'processing') {
     return {
       documentId: existing.rows[0].id,
       duplicate: true,
       chunks: 0
     };
+  }
+
+  if (existing.rows[0]?.status === 'failed') {
+    await query('DELETE FROM documents WHERE id = $1', [existing.rows[0].id]);
   }
 
   const parsed = await parsePdf(input.buffer);
