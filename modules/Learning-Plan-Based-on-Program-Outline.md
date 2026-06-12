@@ -157,7 +157,7 @@ This is one of the most important modules.
 
 ### Learn
 
-### Data Pipelines
+#### Data Pipelines
 
 ```text
 Source Systems
@@ -199,7 +199,7 @@ This is core architect knowledge.
 
 ### Learn Patterns
 
-### Pattern 1
+#### Pattern 1
 
 Simple Prompt
 
@@ -209,7 +209,7 @@ User
 LLM
 ```
 
-### Pattern 2
+#### Pattern 2
 
 RAG
 
@@ -221,7 +221,7 @@ Retriever
 LLM
 ```
 
-### Pattern 3
+#### Pattern 3
 
 Agent
 
@@ -233,7 +233,7 @@ Agent
 Tools
 ```
 
-### Pattern 4
+#### Pattern 4
 
 Multi-Agent
 
@@ -243,7 +243,7 @@ Coordinator
 Worker Agents
 ```
 
-### Pattern 5
+#### Pattern 5
 
 Human-in-the-Loop
 
@@ -267,7 +267,7 @@ Build:
 
 Given your AWS/Azure background, focus on AI services.
 
-## AWS
+### AWS
 
 Study:
 
@@ -279,7 +279,7 @@ Study:
 * EKS
 * SageMaker
 
-## Azure
+### Azure
 
 Study:
 
@@ -314,7 +314,7 @@ Most engineers underestimate this.
 
 ### Learn
 
-### Token Economics
+#### Token Economics
 
 Cost model:
 
@@ -426,7 +426,7 @@ This will differentiate you from most architects.
 
 ### Learn
 
-### Architecture Decision Records (ADR)
+#### Architecture Decision Records (ADR)
 
 Example:
 
@@ -458,7 +458,7 @@ Create:
 
 Given your background, I would build:
 
-## AI Insurance Claims Platform
+### AI Insurance Claims Platform
 
 Features:
 
